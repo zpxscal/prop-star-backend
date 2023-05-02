@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 
 const { User, UserType, Languages } = require("./schemen/user");
 const { EmailVerify, ResetPasswd } = require("./schemen/tokens");
-const { Event, EventType } = require("./schemen/event");
 
 module.exports = {
   User,
@@ -10,6 +9,4 @@ module.exports = {
   Languages,
   EmailVerify,
   ResetPasswd,
-  Event,
-  EventType,
 };

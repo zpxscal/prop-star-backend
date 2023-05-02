@@ -9,7 +9,7 @@ module.exports = async function connection() {
 
     if (process.env.NODE_ENV === "development")
       await mongoose.connect(
-        "mongodb://127.0.0.1:27017/eventful",
+        "mongodb://127.0.0.1:27017/prop-star",
         connectionOptions
       );
     else await mongoose.connect(process.env.EVENTFUL_DB, connectionOptions);

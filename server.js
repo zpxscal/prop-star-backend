@@ -10,13 +10,6 @@ const cron = require("node-cron");
 const jwt = require("jsonwebtoken");
 const axios = require("axios");
 
-const {
-  Homework,
-  User,
-  ResetPasswd,
-  UserType,
-  Languages,
-} = require("./models/shemas");
 const connection = require("./services/db");
 const sendEmail = require("./services/emailer");
 const TypeCheck = require("./services/typeCheck");
@@ -28,7 +21,6 @@ const {
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const settingsRoute = require("./routes/settings");
-const eventRoute = require("./routes/event");
 
 const app = express();
 
@@ -40,7 +32,7 @@ app.use(cookieParser());
 app.use("/images", express.static("./assets/images"));
 
 app.get("/", (req, res) => {
-  res.send("Eventful - We make events easy!");
+  res.send("Prop-Star - Backend!");
 });
 
 app.use("/auth", authRoute);
@@ -52,7 +44,6 @@ app.get("/whoami", checkAuthenticated, async (req, res) => {
 
 app.use("/user", checkAuthenticated, userRoute);
 app.use("/settings", checkAuthenticated, settingsRoute);
-app.use("/event", checkAuthenticated, eventRoute);
 
 app.use("*", (req, res) => {
   res.status(404).send();
