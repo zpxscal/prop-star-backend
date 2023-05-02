@@ -3,16 +3,9 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
-const cron = require("node-cron");
-const jwt = require("jsonwebtoken");
-const axios = require("axios");
 
 const connection = require("./services/db");
-const sendEmail = require("./services/emailer");
-const TypeCheck = require("./services/typeCheck");
 const {
   checkAuthenticated,
   checkNotAuthenticated,
@@ -21,6 +14,7 @@ const {
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const settingsRoute = require("./routes/settings");
+const itemsRoute = require("./routes/items");
 
 const app = express();
 
@@ -44,6 +38,7 @@ app.get("/whoami", checkAuthenticated, async (req, res) => {
 
 app.use("/user", checkAuthenticated, userRoute);
 app.use("/settings", checkAuthenticated, settingsRoute);
+app.use("/items", checkAuthenticated, itemRoute);
 
 app.use("*", (req, res) => {
   res.status(404).send();
