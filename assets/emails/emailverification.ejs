@@ -1,0 +1,120 @@
+<body>
+  <div class="container">
+    <img
+      class="logo"
+      src="https://eventful.kessaft.com/images/logo_light.png"
+    />
+    <div class="card">
+      <h3>Hallo <%= username %>!</h3>
+      <p>Vielen Dank für die Nutzung von Eventful.😄</p>
+      <p>Dein persönlicher Verifizierungscode lautet:</p>
+      <br />
+      <b><%= code %></b>
+      <br />
+      <br />
+      <small>
+        Dieser ist allerdings nur 5 Minuten gültig, also beeile dich und teile
+        ihn mit niemanden.
+      </small>
+      <br />
+      <br />
+
+      <p>Wir wünschen dir viel Spaß!</p>
+      <b>Dein Eventful-Team</b>
+      <hr />
+      <p
+        style="
+          margin: 0 0 12px 0;
+          font-size: 16px;
+          line-height: 24px;
+          font-family: Arial, sans-serif;
+        "
+      >
+        <b>Hat dir unsere App gefallen?</b> <br />
+        Lass doch bitte eine Bewertung da, damit wir unsere Platform ständig
+        verbessern können.☺️
+      </p>
+      <button
+        type="button"
+        style="
+          padding: 10px 15px;
+          background-color: #2459ff;
+          outline: none;
+          border: none;
+          border-radius: 1000px;
+        "
+      >
+        <a href="trustpilot.com" style="text-decoration: none; font-weight: 700"
+          >Feedback</a
+        >
+      </button>
+    </div>
+    <div class="footer">
+      <p
+        style="
+          margin: 0;
+          font-size: 14px;
+          line-height: 16px;
+          font-family: Arial, sans-serif;
+          color: #ffffff;
+        "
+      >
+        © Eventful 2023
+        <br />
+        <a
+          href="http://www.example.com"
+          style="color: #ffffff; text-decoration: underline"
+          >Contact</a
+        >
+      </p>
+    </div>
+  </div>
+</body>
+<style>
+  * {
+    box-sizing: border-box;
+    color: white;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  h1,
+  p {
+    margin: 5px 0;
+  }
+  .container {
+    background-image: url("https://eventful.kessaft.com/images/dark_maps.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .container .logo {
+    height: 100%;
+    width: 60vw;
+    object-fit: contain;
+  }
+
+  .card {
+    align-self: end;
+    border-radius: 50px 50px 0 0;
+    background: #282626;
+    padding: 25px;
+  }
+
+  .footer {
+    background: #322b33;
+    padding: 25px;
+    width: 100%;
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+</style>

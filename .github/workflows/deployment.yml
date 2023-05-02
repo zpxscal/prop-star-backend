@@ -1,0 +1,13 @@
+name: Automatic Deployment
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Notify Update Service
+        run: curl -X GET "https://deploy.kessaft.com/deploy?name=prop-star-backend&path=zpxscal/prop-star-backend&externalport=10014&innerport=3000&secret=${{secrets.AUTH_TOKEN}}"
