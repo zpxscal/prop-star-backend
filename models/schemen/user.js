@@ -28,9 +28,6 @@ const userSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String,
   },
-  birthday: {
-    type: Date,
-  },
   settings: {
     language: {
       type: String,
