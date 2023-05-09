@@ -14,7 +14,7 @@ const {
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const settingsRoute = require("./routes/settings");
-const itemsRoute = require("./routes/items");
+const itemRoute = require("./routes/items");
 
 const app = express();
 

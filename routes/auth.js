@@ -230,12 +230,9 @@ router.get("/emailverification", checkAuthenticated, async (req, res) => {
   await sendEmail(
     user.email,
     "Verify your Email",
-    `Hallo ${user.username},\n\nVielen Dank für die Nutzung von Eventful.😄\n\nDein persönlicher Verifizierungscode lautet: ${token}\n\nDieser ist allerdings nur 5 Minuten gültig, also beeile dich und teile
-    ihn mit niemanden.\n\nWir wünschen dir viel Spaß!\nDein Eventful-Team`,
-    await ejs.renderFile("./assets/emails/emailverification.ejs", {
-      username: user.username,
-      code: token.toUpperCase(),
-    })
+    `Hallo ${user.username},\n\nVielen Dank für die Nutzung von Prop-Star.😄\n\nDein persönlicher Verifizierungscode lautet: ${token}\n\nDieser ist allerdings nur 5 Minuten gültig, also beeile dich und teile
+    ihn mit niemanden.\n\nWir wünschen dir viel Spaß!\nDein Prop-Star Team`,
+    null
   );
 
   return res.send();
