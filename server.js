@@ -28,6 +28,9 @@ app.use("/images", express.static("./assets/images"));
 app.get("/", (req, res) => {
   res.send("Prop-Star - Backend!");
 });
+app.get("/api", (req, res) => {
+  res.send("Prop-Star - API!");
+});
 
 app.use("/auth", authRoute);
 
