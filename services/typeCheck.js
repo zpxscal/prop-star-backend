@@ -1,6 +1,7 @@
 const TypeCheck = class {
-  constructor(value) {
+  constructor(value, where) {
     this.value = value;
+    this.where = where;
   }
 
   isPassword(min = 8, max = 30) {
@@ -59,6 +60,16 @@ const TypeCheck = class {
       return { where, error: "length" };
 
     if (!/^[a-z-]*$/i.test(this.value)) return { where, error: "format" };
+  }
+
+  isPrice() {
+    if (!this.value) return { where: this.where || "price", error: "missing" };
+
+    if (typeof this.value !== "number")
+      return { where: this.where || "price", error: "type" };
+
+    if (this.value < 0)
+      return { where: this.where || "price", error: "negative" };
   }
 };
 

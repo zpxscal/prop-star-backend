@@ -39,13 +39,14 @@ router.get("/near", async (req, res) => {
 });
 
 router.post("/create", checkAuthenticated, async (req, res) => {
-  const { tumbnail, title, description, type, location } = req.body;
+  const { tumbnail, title, description, type, location, price } = req.body;
 
   let error = [];
   error.push(new TypeCheck(tumbnail, "link").isLink());
   error.push(new TypeCheck(title, "title").isTitle());
   error.push(new TypeCheck(description, "description").isTitle());
   error.push(new TypeCheck(location, "location").isLocation());
+  error.push(new TypeCheck(price, "price").isPrice());
 
   if (!Object.values(ItemType).includes(type))
     error.push({ where: "eventtype", error: "invalid" });
@@ -59,6 +60,7 @@ router.post("/create", checkAuthenticated, async (req, res) => {
     title,
     description,
     type,
+    intended_price: price,
     location: {
       lat: location.lat,
       lng: location.lng,
