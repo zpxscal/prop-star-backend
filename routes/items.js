@@ -49,7 +49,7 @@ router.post("/create", checkAuthenticated, async (req, res) => {
   error.push(new TypeCheck(price, "price").isPrice());
 
   if (!Object.values(ItemType).includes(type))
-    error.push({ where: "eventtype", error: "invalid" });
+    error.push({ where: "itemtype", error: "invalid" });
 
   error = error.filter((e) => e != null);
 
