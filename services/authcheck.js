@@ -27,7 +27,7 @@ async function checkJWT(token) {
   try {
     if (!token) return false;
 
-    var decoded = jwt.decode(token);
+    const decoded = jwt.decode(token);
 
     if (!decoded || !decoded.id || typeof decoded.id !== "string") return false;
 

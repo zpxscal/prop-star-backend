@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
 
 const ItemType = {
-  HOUSE: "house",
-  PROPERTY: "property",
+  HOUSE: "House",
+  PROPERTY: "Property",
+  INDUSTRY: "Industry",
 };
 
 const itemSchema = new mongoose.Schema({
-  user: {
+  seller: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },
   type: {
     type: String,
-    default: "property",
+    default: ItemType.PROPERTY,
     enum: Object.values(ItemType),
     required: true,
   },
-  name: {
+  title: {
     type: String,
     required: true,
     unique: true,
@@ -27,6 +28,7 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   website: String,
+  intended_price: Number,
   images: [
     {
       data: {
@@ -39,13 +41,17 @@ const itemSchema = new mongoose.Schema({
       },
     },
   ],
-  contact: {
-    email: {
-      type: String,
+  location: {
+    place_id: {
+      type: Number,
       required: true,
     },
-    telephone: {
-      type: String,
+    lat: {
+      type: Number,
+      required: true,
+    },
+    lng: {
+      type: Number,
       required: true,
     },
   },

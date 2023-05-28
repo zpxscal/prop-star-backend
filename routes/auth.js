@@ -46,21 +46,15 @@ router.get("/available/email", async (req, res) => {
 
 router.post("/login", checkNotAuthenticated, async (req, res) => {
   if (
-    (new TypeCheck(req.body.account).isEmail() != null ||
-      new TypeCheck(req.body.account).isUsername() != null) &&
+    new TypeCheck(req.body.email).isEmail() != null &&
     new TypeCheck(req.body.password).isPassword() != null
   )
     return res.status(400).send();
 
-  const { account, password, remember } = req.body;
-
-  if (typeof account !== "string") return res.status(415).send();
+  const { email, password, remember } = req.body;
 
   const user = await User.findOne({
-    $or: [
-      { email: account.toLowerCase().trim() },
-      { username: { $regex: `^${account.trim()}$`, $options: "i" } },
-    ],
+    email: email.toLowerCase().trim(),
   });
 
   if (!user) return res.status(401).send();

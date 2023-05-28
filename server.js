@@ -38,7 +38,7 @@ app.get("/whoami", checkAuthenticated, async (req, res) => {
 
 app.use("/user", checkAuthenticated, userRoute);
 app.use("/settings", checkAuthenticated, settingsRoute);
-app.use("/items", checkAuthenticated, itemRoute);
+app.use("/item", itemRoute);
 
 app.use("*", (req, res) => {
   res.status(404).send();

@@ -36,6 +36,16 @@ const userSchema = new mongoose.Schema({
       required: true,
     },
   },
+  contact: {
+    email: {
+      type: String,
+      required: true,
+    },
+    telephone: {
+      type: String,
+      required: true,
+    },
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
