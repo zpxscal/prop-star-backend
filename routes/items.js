@@ -43,7 +43,7 @@ router.post("/create", checkAuthenticated, async (req, res) => {
   const { tumbnail, title, description, type, location, price } = req.body;
 
   let error = [];
-  error.push(new TypeCheck(tumbnail, "link").isLink());
+  error.push(new TypeCheck(tumbnail, "link").isLink(true));
   error.push(new TypeCheck(title, "title").isTitle());
   error.push(new TypeCheck(description, "description").isTitle());
   error.push(new TypeCheck(location, "location").isLocation());
