@@ -16,7 +16,7 @@ router.get("/own", checkAuthenticated, async (req, res) => {
 });
 
 router.get("/all", async (req, res) => {
-  let items = await Item.find({ soldAt: { $exists: false, $ne: null } })
+  let items = await Item.find({ soldAt: { $exists: false } })
     .populate("seller")
     .lean();
 
