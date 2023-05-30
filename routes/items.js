@@ -15,6 +15,12 @@ router.get("/own", checkAuthenticated, async (req, res) => {
   res.send(items);
 });
 
+router.get("/all", checkAuthenticated, async (req, res) => {
+  let items = await Item.find({ soldAt: { $exists: true, $ne: null } });
+
+  res.send(items);
+});
+
 router.get("/near", async (req, res) => {
   if (!req.query.lat || !req.query.lng)
     return res.status(400).send({ where: "location", error: "missing" });
@@ -30,6 +36,7 @@ router.get("/near", async (req, res) => {
       $gte: lng - 0.5,
       $lte: lng + 0.5,
     },
+    soldAt: { $exists: true, $ne: null },
   })
     .populate("seller")
     .lean();
