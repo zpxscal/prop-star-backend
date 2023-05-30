@@ -5,6 +5,7 @@ const {
   checkNotAuthenticated,
 } = require("../services/authcheck");
 const { Item, ItemType } = require("../models/shemas");
+const TypeCheck = require("../services/typeCheck");
 
 const router = express.Router();
 
