@@ -56,8 +56,8 @@ router.post("/create", checkAuthenticated, async (req, res) => {
 
   if (error.length) return res.status(400).send(error);
 
-  await Item.create({
-    images: [{ data: tumbnail, tumbnail: true }],
+  const item = await Item.create({
+    images: [{ data: tumbnail, thumbnail: true }],
     title,
     description,
     type,
@@ -70,7 +70,7 @@ router.post("/create", checkAuthenticated, async (req, res) => {
     seller: req.user._id,
   });
 
-  res.status(201).send();
+  res.status(201).send(item);
 });
 
 router.put("/sold/:id", checkAuthenticated, async (req, res) => {
