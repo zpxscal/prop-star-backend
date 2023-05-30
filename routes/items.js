@@ -20,9 +20,7 @@ router.get("/all", async (req, res) => {
     .populate("seller")
     .lean();
 
-  console.log(items);
-
-  items.forEach((i) => (i.seller.password = "hidden"));
+  items = items.map((i) => ({ ...i, "seller.password": "hidden" }));
 
   res.send(items);
 });
