@@ -56,7 +56,7 @@ router.post("/create", checkAuthenticated, async (req, res) => {
 
   if (error.length) return res.status(400).send(error);
 
-  await Event.create({
+  await Item.create({
     images: [{ data: tumbnail, tumbnail: true }],
     title,
     description,
