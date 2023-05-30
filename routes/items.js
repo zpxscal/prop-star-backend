@@ -15,10 +15,13 @@ router.get("/own", checkAuthenticated, async (req, res) => {
   res.send(items);
 });
 
-router.get("/all", checkAuthenticated, async (req, res) => {
+router.get("/all", async (req, res) => {
   let items = await Item.find({ soldAt: { $exists: true, $ne: null } })
     .populate("seller")
     .lean();
+
+  console.log(items);
+
   items.forEach((i) => (i.seller.password = "hidden"));
 
   res.send(items);
