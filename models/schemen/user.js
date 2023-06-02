@@ -43,7 +43,7 @@ const userSchema = new mongoose.Schema({
     },
     telephone: {
       type: String,
-      required: true,
+      required: false,
     },
   },
   createdAt: {
